@@ -7,7 +7,7 @@ A mobile app which will functions as the craiglist. Where users can access diffe
 -----
 ##### [MongoDB Commmunity Create Account](https://account.mongodb.com/account/login)
 -----
-For running the application locally, the link about to create a Mongo Alas user account, which will give you options on how to set up your account. Following all the instructions still your MongoDB cluster is running.
+Use the link anove to create a Mongo Alas user account, which will give you options on how to set up your account. Follow all the instructions and start up your MongoDB cluster.
 **Note - You need to place you cluster login credentails to your cluster in the FAST_API/mongoDB_requests/.env file with your username and password. Lastly, copy the MongoDB *connection your application* web UI string onto the CONNECTION_STRING variable in the FAST_API/mongoDB_requests/main.py**
 Requirements:
 - Python 3.9 >= 
