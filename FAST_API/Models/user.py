@@ -1,16 +1,11 @@
-from pydantic import BaseMode
-from uiid import UUID, uuid4
-from enum import Enum
-from typing import Optional, List
+from typing import Optional
+from pydantic import BaseModel
 
-class Gender(str, Enum):
-    male="male"
-    female = "female"
-    
-class User( BaseModel):
-    id: Optional[UUID] = uuid4()
-    first_name: str
-    last_name: str
-    middle_name: Optional[str]
-    gender: Gender
-    roles: List[str]
+
+class User(BaseModel):
+    first_name: Optional[str]
+    last_name: Optional[str]
+    email: str
+    password: str
+    gender: Optional[str]
+    roles: Optional[dict]

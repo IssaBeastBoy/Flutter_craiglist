@@ -1,12 +1,17 @@
 from pymongo import MongoClient
+from dotenv import load_dotenv, find_dotenv
+import os
 
+load_dotenv(find_dotenv())
+
+password = os.environ.get('MONGODB_PWD')
+username = os.environ.get('MONGODB_USER')
 
 def get_database():
-    CONNECTION_STRING = "mongodb+srv://<Username>:<password>@flutterservers.wp3ngbd.mongodb.net/?retryWrites=true&w=majority"
+    # Replace the below variable as per README file
+    CONNECTION_STRING = f"mongodb+srv://{username}:{password}@flutterservers.wp3ngbd.mongodb.net/?retryWrites=true"
     client = MongoClient(CONNECTION_STRING)
-    return client['craiglist_info']
+    return client.craiglistDB
 
-
-SDSDS
 if __name__ == "__main__":
-   dbname = get_database()
+    dbname = get_database()
