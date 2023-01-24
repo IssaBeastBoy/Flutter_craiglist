@@ -7,6 +7,5 @@ def get_database():
     return client['craiglist_info']
 
 
-SDSDS
 if __name__ == "__main__":
-   dbname = get_database()
+    dbname = get_database()
