@@ -16,77 +16,113 @@ class _UserRegistreState extends State<UserRegistre> {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
   final TextEditingController _confirm = TextEditingController();
+
+Widget _buildText(double fontSize, String text) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+        color: Colors.white,
+        fontSize: fontSize,
+      ),
+    );
+  }
+
+  Widget _buildTextForm(TextEditingController controller,
+      TextInputType inputType, String text, bool onbscure) {
+    return TextFormField(
+      keyboardType: inputType,
+      controller: controller,
+      obscureText: onbscure,
+      decoration: InputDecoration(
+          labelText: text,
+          labelStyle: TextStyle(
+              fontWeight: FontWeight.w400,
+              fontSize: 18,
+              color: Color.fromARGB(255, 235, 210, 165))),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(20),
       margin: EdgeInsets.all(20),
-      height: 450,
-      decoration: BoxDecoration(
-          border: Border.all(
-            color: Colors.grey.shade300, //color of border
-            width: 2, //width of border
-          ),
-          borderRadius: BorderRadius.circular(5)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Form(
               child: Column(
             children: [
-              Center(
-                child: Text('Register'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Column(
+                    children: [
+                      _buildText(30, "All"),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      _buildText(30, "IN ONE"),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      _buildText(30, "Convenience")
+                    ],
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  RotatedBox(
+                    quarterTurns: -1,
+                    child: _buildText(40, 'Sign up'),
+                  )
+                ],
               ),
-              TextFormField(
-                keyboardType: TextInputType.text,
-                controller: _name,
-                decoration: InputDecoration(
-                  labelText: 'Enter name',
-                ),
+              SizedBox(
+                height: 40,
               ),
-              TextFormField(
-                keyboardType: TextInputType.text,
-                controller: _surname,
-                decoration: InputDecoration(
-                  labelText: 'Enter surname',
-                ),
-              ),
-              TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                controller: _email,
-                decoration: InputDecoration(
-                  labelText: 'Enter email',
-                ),
-              ),
-              TextFormField(
-                obscureText: true,
-                controller: _password,
-                decoration: InputDecoration(
-                  labelText: 'Enter password',
-                ),
-              ),
-              TextFormField(
-                obscureText: true,
-                controller: _confirm,
-                decoration: InputDecoration(
-                  labelText: 'Confirm password',
-                ),
-              ),
+              _buildTextForm(_name, TextInputType.text, 'Enter name', false),
+              _buildTextForm(
+                  _surname, TextInputType.text, 'Enter surname', false),
+              _buildTextForm(
+                  _email, TextInputType.emailAddress, 'Enter email', false),
+              _buildTextForm(_password, TextInputType.emailAddress,
+                  'Enter password', true),
+              _buildTextForm(_confirm, TextInputType.emailAddress,
+                  'Confirm password', true),
               SizedBox(
                 height: 20,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(onPressed: (() {}), child: Text('Register')),
+                children: [                  
                   TextButton(
                       onPressed: (() {
                         Navigator.pushNamed(context, LoginScreen.routeName);
                       }),
                       child: Text(
                         'Login',
-                        style: TextStyle(color: Colors.grey.shade400),
-                      ))
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 18,
+                            color: Color.fromARGB(255, 235, 210, 165),
+                          ))),
+                  ElevatedButton(
+                    onPressed: (() {}),
+                    child: Icon(
+                      Icons.arrow_forward,
+                      color: Color.fromARGB(255, 6, 159, 175),
+                    ),
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.white),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        )),
+                  ),
                 ],
               )
             ],
