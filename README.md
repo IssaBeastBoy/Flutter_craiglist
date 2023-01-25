@@ -1,6 +1,8 @@
 # Flutter_craiglist
 A mobile app which will functions as the craiglist. Where users can access different vendors. 
 
+**Note - Both the API and the flutter emulator have to be running locally.**
+
 ## DataBase
 ### MongoDB
 ##### The Mongo DB no SQL data base is used as the data storage structure for this application.
@@ -29,3 +31,12 @@ For testing locally run the API start up command from the director:
 - Use the URL given in the output of the command above on your browser to access the different endpoint in the code.
 
 
+## Mobile Application
+
+### Flutter Andriod
+#### The flutter code will be what the use interacts to access all the craiglist functionality of the application.
+-----
+##### [Installation and Docs](https://docs.flutter.dev/get-started/install)
+-----
+Once all the installation has been done, enter the flutter/ directory and run:
+    `flutter run`
