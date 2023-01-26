@@ -1,10 +1,11 @@
-import 'dart:ffi';
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 // Screens
 import '../screens/registreScreen.dart';
+
+// Provider
+import '../providers/auth_user.dart';
 
 class UserLogin extends StatefulWidget {
   const UserLogin({super.key});
@@ -17,6 +18,14 @@ class _UserLoginState extends State<UserLogin> {
   final TextEditingController _emailAddress = TextEditingController();
   final TextEditingController _password = TextEditingController();
 
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _emailAddress.dispose();
+    _password.dispose();
+    super.dispose();
+  }
+
   Widget _buildText(double fontSize, String text) {
     return Text(
       text,
@@ -26,6 +35,29 @@ class _UserLoginState extends State<UserLogin> {
         fontSize: fontSize,
       ),
     );
+  }
+
+  Future<void> _submit() async {
+    try {
+      await Provider.of<Auth>(context, listen: false)
+          .signIn(_emailAddress.text, _password.text);
+    } catch (error) {
+      showDialog(
+          context: context,
+          builder: ((context) => AlertDialog(
+                title: Center(
+                  child: Text('Ooops!'),
+                ),
+                content: Text(error.toString()),
+                actions: [
+                  TextButton(
+                      onPressed: (() {
+                        Navigator.of(context).pop();
+                      }),
+                      child: Text('Okay'))
+                ],
+              )));
+    }
   }
 
   @override
@@ -63,6 +95,12 @@ class _UserLoginState extends State<UserLogin> {
               TextFormField(
                 keyboardType: TextInputType.emailAddress,
                 controller: _emailAddress,
+                validator: (value) {
+                  if (value!.isEmpty || !value!.contains('@')) {
+                    return "Invalid email";
+                  }
+                  return null;
+                },
                 decoration: InputDecoration(
                   labelText: 'Enter email',
                     labelStyle: TextStyle(
@@ -74,6 +112,11 @@ class _UserLoginState extends State<UserLogin> {
               TextFormField(
                 obscureText: true,
                 controller: _password,
+                validator: (value) {
+                  if (value!.isEmpty || value!.length < 5) {
+                    return "Password too short";
+                  }
+                },
                 decoration: InputDecoration(
                   labelText: 'Enter password',
                     labelStyle: TextStyle(
