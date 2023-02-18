@@ -17,4 +17,5 @@ async def logIn(userInfo: User):
 
 @app.post("/api/v1/register")
 async def register(userInfo: User):
+    print(userInfo)
     return insertUser(userInfo)

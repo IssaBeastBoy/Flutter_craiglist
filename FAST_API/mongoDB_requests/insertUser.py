@@ -7,11 +7,12 @@ def insertUser(userInfo):
     usersCollection = collections.users
     sessionTime = datetime.timedelta(minutes=30)
     timeStamp = datetime.datetime.now() + sessionTime
+    print(userInfo)
     newUser = {
         "email": userInfo.email,
         "password": userInfo.password,
-        "first_name": userInfo.first_name,
-        "last_name": userInfo.last_name,
+        "name": userInfo.name,
+        "surname": userInfo.surname,
         "roles": {}
     }
     try:

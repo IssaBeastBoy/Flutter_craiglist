@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
 // Widgets
-import '../widgets/userRegistre.dart';
+import '../widgets/userlogin.dart';
 
-class RegistreScreen extends StatelessWidget {
-  static const routeName = '/registre';
+class LoginScreen extends StatelessWidget {
+  static const routeName = '/';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
+      height: MediaQuery.of(context).size.height,
       decoration: BoxDecoration(
           gradient: LinearGradient(
         colors: [
@@ -23,7 +24,7 @@ class RegistreScreen extends StatelessWidget {
       child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-          UserRegistre(),
+          UserLogin(),
       ],
       ),
     ));

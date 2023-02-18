@@ -1,11 +1,11 @@
-from typing import Optional
+from typing import Union
 from pydantic import BaseModel
 
 
 class User(BaseModel):
-    first_name: Optional[str]
-    last_name: Optional[str]
+    name: Union[str, None] = None
+    surname: Union[str, None] = None
     email: str
     password: str
-    gender: Optional[str]
-    roles: Optional[dict]
+    gender: Union[str, None] = None
+    roles:  Union[list, None] = None

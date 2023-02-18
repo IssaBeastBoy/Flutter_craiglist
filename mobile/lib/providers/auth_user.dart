@@ -26,7 +26,7 @@ class Auth with ChangeNotifier {
   }
 
   Future<void> signIn(String emailAddress, String password) async {
-    const url = "http://127.0.0.1:8000/api/v1/login";
+    const url = "http://10.0.2.2/api/v1/login";
     var request = {"email": emailAddress, "password": password};
     try {
       final response =
@@ -46,7 +46,7 @@ class Auth with ChangeNotifier {
 
   Future<void> registerUser(
       String name, String surname, String emailAddress, String password) async {
-    const url = "http://127.0.0.1:8000/api/v1/register";
+    const url = "http://10.0.2.2:8000/api/v1/register";
     var request = {
       "email": emailAddress,
       "password": password,
@@ -55,8 +55,9 @@ class Auth with ChangeNotifier {
     };
     try {
       final response =
-          await http.post(Uri.parse(url), body: json.encode(request));
+          await http.post(Uri.parse(url), body: request);
       final responseData = json.decode(response.body) as Map<String, dynamic>;
+      print(responseData.toString());
       if (responseData['status'] != 200) {
         throw Exception(responseData['body']);
       }
@@ -65,6 +66,7 @@ class Auth with ChangeNotifier {
       _loginExpiry = responseData["timestamp"];
     } catch (error) {
       _login = error.toString();
+      throw Exception(error.toString());
     }
   }
 }

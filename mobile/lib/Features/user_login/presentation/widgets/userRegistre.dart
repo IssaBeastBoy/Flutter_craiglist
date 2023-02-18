@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import '../screens/loginScreen.dart';
 
 // Provider
-import '../providers/auth_user.dart';
+import '../../../../providers/auth_user.dart';
 
 class UserRegistre extends StatefulWidget {
   const UserRegistre({super.key});
@@ -20,6 +20,7 @@ class _UserRegistreState extends State<UserRegistre> {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
   final TextEditingController _confirm = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -70,6 +71,7 @@ class _UserRegistreState extends State<UserRegistre> {
       TextInputType inputType, String text, bool onbscure, String field) {
     return TextFormField(
       keyboardType: inputType,
+      style: TextStyle(color: Colors.white),
       controller: controller,
       obscureText: onbscure,
       validator: (value) {
@@ -93,8 +95,8 @@ class _UserRegistreState extends State<UserRegistre> {
             return "Password too short";
           }
           return null;
-        } else if (field == "comfirm") {
-          if (value!.isEmpty || value! != _password) {
+        } else if (field == "confirm") {
+          if (value!.isEmpty || value!.trim() != _password.text.trim()) {
             return "Password does not match";
           }
           return null;
@@ -118,7 +120,7 @@ class _UserRegistreState extends State<UserRegistre> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Form(
-              child: SingleChildScrollView(
+            key: _formKey,
             child: Column(
               children: [
                 Row(
@@ -151,8 +153,7 @@ class _UserRegistreState extends State<UserRegistre> {
                 ),
                 _buildTextForm(
                     _name, TextInputType.text, 'Enter name', false, "name"),
-                _buildTextForm(
-                    _surname, TextInputType.text, 'Enter surname',
+                _buildTextForm(_surname, TextInputType.text, 'Enter surname',
                     false, "surname"),
                 _buildTextForm(_email, TextInputType.emailAddress,
                     'Enter email', false, "email"),
@@ -177,7 +178,11 @@ class _UserRegistreState extends State<UserRegistre> {
                               color: Color.fromARGB(255, 235, 210, 165),
                             ))),
                     ElevatedButton(
-                      onPressed: _submit,
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          _submit();
+                        }
+                      },
                       child: Icon(
                         Icons.arrow_forward,
                         color: Color.fromARGB(255, 6, 159, 175),
@@ -195,7 +200,7 @@ class _UserRegistreState extends State<UserRegistre> {
                 )
               ],
             ),
-          )),
+          )
         ],
       ),
     );
