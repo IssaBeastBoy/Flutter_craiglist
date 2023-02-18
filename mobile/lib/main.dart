@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-// User log in
-// ---- Screens
-import 'Features/user_login/presentation/screens/loginScreen.dart';
-import 'Features/user_login/presentation/screens/registreScreen.dart';
+// Features
+import './Features/user_login/presentation/screens/loginScreen.dart';
+import './Features/register_user/presentation/screens/registreScreen.dart';
 
 // Providers
 import 'providers/auth_user.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-// Screens
-import '../screens/registreScreen.dart';
+// Feature
+import '../../../register_user/presentation/screens/registreScreen.dart';
 
 // Provider
 import '../../../../providers/auth_user.dart';
