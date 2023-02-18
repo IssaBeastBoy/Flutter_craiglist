@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-// Screens
-import 'screens/loginScreen.dart';
-import 'screens/registreScreen.dart';
+// User log in
+// ---- Screens
+import 'Features/user_login/presentation/screens/loginScreen.dart';
+import 'Features/user_login/presentation/screens/registreScreen.dart';
+
+// Providers
+import 'providers/auth_user.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,14 +19,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiProvider(
+      providers: [ChangeNotifierProvider(create: (ctx) => Auth())],
+      child: MaterialApp(
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        routes: {
+          LoginScreen.routeName: (ctx) => LoginScreen(),
+          RegistreScreen.routeName: (ctx) => RegistreScreen()
+        },
       ),
-      routes: {
-        LoginScreen.routeName: (ctx) => LoginScreen(),
-        RegistreScreen.routeName: (ctx) => RegistreScreen()
-      },
     );
   }
 }

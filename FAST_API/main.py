@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 
 # DB imports
-from mongoDB_requests.getUser import getUser
+from mongoDB_requests.checkUser import checkUser
 from mongoDB_requests.insertUser import insertUser
 
 # Model imports
@@ -12,9 +12,10 @@ app = FastAPI()
 
 @app.post("/api/v1/login")
 async def logIn(userInfo: User):
-    return getUser(userInfo)
+    return checkUser(userInfo)
 
 
 @app.post("/api/v1/register")
 async def register(userInfo: User):
+    print(userInfo)
     return insertUser(userInfo)
