@@ -24,7 +24,7 @@ void main() {
   });
 
   test(
-    'should get use email and address',
+    'should get user login details',
     () async {
       // arrange
       when(mockAuthUser.getAuthUser(testEmail, testpassword))
