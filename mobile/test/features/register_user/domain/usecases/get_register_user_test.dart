@@ -36,7 +36,7 @@ void main() {
 
   test("should get user registration details", () async {
     // arrange
-    when(mockRegisterUder.getRegisterUder(
+    when(mockRegisterUder.getRegisterUser(
             password, email, name, surname, roles))
         .thenAnswer((_) async => Right(testRegisterUser));
     // act
@@ -48,7 +48,7 @@ void main() {
         roles: roles));
     // assert
     expect(result, Right(testRegisterUser));
-    verify(mockRegisterUder.getRegisterUder(
+    verify(mockRegisterUder.getRegisterUser(
         password, email, name, surname, roles));
     verifyNoMoreInteractions(mockRegisterUder);
   });

@@ -12,7 +12,7 @@ void main() {
   final String name = 'Thulani';
   final String surname = "Tshabalala";
   final Map<String, dynamic> roles = {};
-  final tRegisterRequest = RegistrationRequest(
+  final tRegisterRequest = RegistrationRequestModel(
       password: password,
       email: email,
       name: name,
@@ -28,7 +28,7 @@ void main() {
     final Map<String, dynamic> requestMap =
         json.decode(fixture("register_user/registeruser_request.json"));
     // act
-    final result = RegistrationRequest.fromJSON(requestMap);
+    final result = RegistrationRequestModel.fromJSON(requestMap);
     // assert
     expect(result, tRegisterRequest);
   });

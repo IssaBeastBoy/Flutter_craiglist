@@ -14,7 +14,7 @@ class GetRegisterUser implements UseCase<RegisterUser, Params> {
   @override
   Future<Either<Failure, RegisterUser>?> call(Params params) async {
     // TODO: implement call
-    return await registerUserRepo.getRegisterUder(params.password, params.email,
+    return await registerUserRepo.getRegisterUser(params.password, params.email,
         params.name, params.surname, params.roles);
   }
 }
