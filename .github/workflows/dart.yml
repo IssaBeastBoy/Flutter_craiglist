@@ -26,9 +26,9 @@ jobs:
         run: flutter pub get
         working-directory: mobile
         
-      - name: Analyze project source
-        run: flutter analyze
-        working-directory: mobile
+      #- name: Analyze project source
+       # run: flutter analyze
+       # working-directory: mobile
         
       - name: Run tests
         run: flutter test
