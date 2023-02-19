@@ -16,7 +16,13 @@ def insertUser(userInfo):
         "roles": {}
     }
     try:
-        documentId = usersCollection.insert_one(newUser).inserted_id
-        return {"status": 200, "body": documentId, "timestamp": timeStamp}
+        found = usersCollection.find_one({
+            "email": newUser.email
+        })
+        if(found == None):
+            documentId = usersCollection.insert_one(newUser).inserted_id
+            return {"status": 200, "body": {"_id": documentId}, "timestamp": timeStamp, "message": "Success"}
+        else:
+            return {"status": 400, "body": {}, "timestamp": timeStamp, "message": "User already exists"}
     except:
-        return {"status": 500, "body": "Unable to create user. Try again."}
+        return {"status": 500, "body": {}, "timestamp": timeStamp, "message": "Unable to create user. Try again."}

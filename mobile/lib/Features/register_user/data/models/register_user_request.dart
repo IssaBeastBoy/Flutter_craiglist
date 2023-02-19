@@ -1,4 +1,4 @@
-import 'package:mobile/Features/register_user/domain/entities/register_user.dart';
+import 'package:mobile/Features/register_user/domain/entities/register_user_request.dart';
 
 class RegistrationRequest extends RegisterUser {
   final String password;
@@ -19,4 +19,13 @@ class RegistrationRequest extends RegisterUser {
             name: name,
             surname: surname,
             roles: roles);
+
+  factory RegistrationRequest.fromJSON(Map<String, dynamic> request) {
+    return RegistrationRequest(
+        password: request['password'],
+        email: request["email"],
+        name: request["name"],
+        surname: request["surname"],
+        roles: request["roles"]);
+  }
 }

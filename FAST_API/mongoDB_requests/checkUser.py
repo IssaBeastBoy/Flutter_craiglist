@@ -13,7 +13,7 @@ def checkUser(userInfo):
             "password": userInfo.password
         })
         if (found == None):
-            return {"status": 400, "body": "User not found"}
-        return {"body": found, "status": 200, "timestamp": timeStamp}
+            return {"status": 400, "body": {}, "timestamp": timeStamp, "message": "User not found"}
+        return {"status": 200, "body": found, "timestamp": timeStamp, "message": "Success"}
     except:
-        return {"status": 500, "body": "Unable to log user in. Try again."}
+        return {"status": 500, "body": {}, "timestamp": timeStamp, "message": "Unable to log user in. Try again."}

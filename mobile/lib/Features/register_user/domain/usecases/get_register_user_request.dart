@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:mobile/Features/register_user/domain/repositories/get_register_userrepo.dart';
+import 'package:mobile/Features/register_user/domain/repositories/get_register_user_requestrepo.dart';
 
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecase/usecase.dart';
-import '../entities/register_user.dart';
+import '../entities/register_user_request.dart';
 
 class GetRegisterUser implements UseCase<RegisterUser, Params> {
   final RegisterUserRepo registerUserRepo;
