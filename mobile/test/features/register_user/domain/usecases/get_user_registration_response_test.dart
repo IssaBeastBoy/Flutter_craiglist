@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mobile/Features/register_user/domain/entities/register_user_response.dart';
-import 'package:mobile/Features/register_user/domain/repositories/get_user_registration_responserepo.dart';
+import 'package:mobile/Features/register_user/domain/repositories/get_user_registration_response_repo.dart';
 import 'package:mobile/Features/register_user/domain/usecases/get_user_registration_response.dart';
 import 'package:mockito/mockito.dart';
 
@@ -19,7 +19,7 @@ void main() {
 
   setUp(() {
     mockUserRegistrationResponse = MockUserRegistrationResponse();
-    status = 400;
+    status = 200;
     body = {"_id": 1};
     timestamp = "2022-07-03 16:21:12.357246";
     message = "Success";

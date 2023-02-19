@@ -3,8 +3,8 @@ import 'package:equatable/equatable.dart';
 import 'package:mobile/core/error/failures.dart';
 import 'package:mobile/core/usecase/usecase.dart';
 
-import '../entities/authuser.dart';
-import '../repositories/get_authuser_repo.dart';
+import '../entities/authuser_request.dart';
+import '../repositories/get_authuser_request_repo.dart';
 
 class GetAuthUser implements UseCase<AuthUser, Params> {
   final AuthUserRepo repo;

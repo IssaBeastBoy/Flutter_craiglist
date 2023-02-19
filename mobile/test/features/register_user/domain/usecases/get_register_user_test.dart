@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mobile/Features/register_user/domain/entities/register_user_request.dart';
-import 'package:mobile/Features/register_user/domain/repositories/get_register_user_requestrepo.dart';
+import 'package:mobile/Features/register_user/domain/repositories/get_register_user_request_repo.dart';
 import 'package:mobile/Features/register_user/domain/usecases/get_register_user_request.dart';
 import 'package:mobile/Features/user_login/presentation/widgets/userlogin.dart';
 import 'package:mockito/mockito.dart';

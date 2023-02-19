@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:mobile/Features/user_login/domain/entities/authuser.dart';
+import 'package:mobile/Features/user_login/domain/entities/authuser_request.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:mobile/Features/user_login/domain/repositories/get_authuser_repo.dart';
-import 'package:mobile/Features/user_login/domain/usecases/get_authuser.dart';
+import 'package:mobile/Features/user_login/domain/repositories/get_authuser_request_repo.dart';
+import 'package:mobile/Features/user_login/domain/usecases/get_authuser_request.dart';
 
 class MockAuthUser extends Mock implements AuthUserRepo {}
 
@@ -24,7 +24,7 @@ void main() {
   });
 
   test(
-    'should get user login details',
+    'should get user login request detail',
     () async {
       // arrange
       when(mockAuthUser.getAuthUser(testEmail, testpassword))

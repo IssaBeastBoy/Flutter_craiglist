@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:mobile/Features/register_user/domain/repositories/get_register_user_requestrepo.dart';
+import 'package:mobile/Features/register_user/domain/repositories/get_register_user_request_repo.dart';
 
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecase/usecase.dart';

@@ -1,21 +1,20 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
+import 'package:mobile/core/error/failures.dart';
 
-import '../../../../core/error/failures.dart';
 import '../../../../core/usecase/usecase.dart';
-import '../entities/register_user_response.dart';
-import '../repositories/get_user_registration_response_repo.dart';
+import '../entities/authuser_response.dart';
+import '../repositories/get_authuser_response_repo.dart';
 
-class GetUserRegistrationResponse
-    implements UseCase<RegistrationResponse, Params> {
-  final RegistrationResponseRepo registrationResponseRepo;
+class GetAuthUserResponse implements UseCase<AuthUserResponse, Params> {
+  final AuthUserResponseRepo authUserResponseRepo;
 
-  GetUserRegistrationResponse(this.registrationResponseRepo);
+  GetAuthUserResponse(this.authUserResponseRepo);
 
   @override
-  Future<Either<Failure, RegistrationResponse>?> call(Params params) async {
+  Future<Either<Failure, AuthUserResponse>?> call(Params params) async {
     // TODO: implement call
-    return await registrationResponseRepo.getRegistrationResponse(
+    return await authUserResponseRepo.getAuthUserResponse(
         params.status, params.body, params.timestamp, params.message);
   }
 }
