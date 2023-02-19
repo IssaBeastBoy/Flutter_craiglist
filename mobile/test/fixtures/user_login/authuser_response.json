@@ -1,0 +1,13 @@
+{
+  "status": 200,
+  "body": {
+    "_id": 1,
+    "email": "test@test.com",
+    "password": "12345",
+    "name": "Thulani",
+    "surname": "Tshabalala",
+    "roles": {}
+  },
+  "timestamp": "2022-07-03 16:21:12.357246",
+  "message": "Success"
+}
