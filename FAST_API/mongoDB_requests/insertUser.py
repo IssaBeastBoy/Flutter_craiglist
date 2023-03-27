@@ -5,14 +5,14 @@ import datetime
 def insertUser(userInfo):
     collections = get_database()
     usersCollection = collections.users
-    sessionTime = datetime.timedelta(minutes=30)
-    timeStamp = datetime.datetime.now() + sessionTime
+    timeStamp = datetime.strftime("%d %B %Y")
     print(userInfo)
     newUser = {
         "email": userInfo.email,
         "password": userInfo.password,
         "name": userInfo.name,
         "surname": userInfo.surname,
+        "created": timeStamp,
         "roles": {}
     }
     try:
@@ -21,8 +21,8 @@ def insertUser(userInfo):
         })
         if(found == None):
             documentId = usersCollection.insert_one(newUser).inserted_id
-            return {"status": 200, "body": {"_id": documentId}, "timestamp": timeStamp, "message": "Success"}
+            return {"status": 200, "body": {"_id": documentId}, "message": "Success"}
         else:
-            return {"status": 400, "body": {}, "timestamp": timeStamp, "message": "User already exists"}
+            return {"status": 400, "body": {},"message": "User already exists"}
     except:
-        return {"status": 500, "body": {}, "timestamp": timeStamp, "message": "Unable to create user. Try again."}
+        return {"status": 500, "body": {},"message": "Unable to create user. Try again."}

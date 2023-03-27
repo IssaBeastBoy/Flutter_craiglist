@@ -5,15 +5,14 @@ import datetime
 def checkUser(userInfo):
     collections = get_database()
     usersCollection = collections.users
-    sessionTime = datetime.timedelta(minutes=30)
-    timeStamp = datetime.datetime.now() + sessionTime
     try:
         found = usersCollection.find_one({
             "email": userInfo.email,
             "password": userInfo.password
         })
+        found["_id"] = str(found["_id"])
         if (found == None):
-            return {"status": 400, "body": {}, "timestamp": timeStamp, "message": "User not found"}
-        return {"status": 200, "body": found, "timestamp": timeStamp, "message": "Success"}
+            return {"status": 400, "body": {},  "message": "User not found"}
+        return {"status": 200, "body": found, "message": "Success"}
     except:
-        return {"status": 500, "body": {}, "timestamp": timeStamp, "message": "Unable to log user in. Try again."}
+        return {"status": 500, "body": {}, "message": "Unable to log user in. Try again."}

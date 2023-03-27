@@ -18,10 +18,10 @@ void main() {
     "surname": "Tshabalala",
     "roles": {}
   };
-  final String timestamp = "2022-07-03 16:21:12.357246";
+  final String created = "2022-07-03 16:21:12.357246";
   final String message = "Success";
   final tAuthUserResponseModel =
-      AuthUserResponseModel(status, body, timestamp, message);
+      AuthUserResponseModel(status, body, created, message);
 
   test("should be a subclass of the Authenticate User Response entity", () {
     expect(tAuthUserResponseModel, isA<AuthUserResponse>());
